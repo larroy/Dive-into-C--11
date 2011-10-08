@@ -50,3 +50,6 @@ if not GetOption('verbose'):
 
 env.Command('diveintocpp-{0}.pdf'.format(SCutils.branch_name()), 'diveintocpp.sgml', ["docbook2pdf $SOURCES"])
 env.Command('html', 'diveintocpp.sgml', ["db2html -u $SOURCES"])
+
+
+SConscript('examples/SConscript', exports=['env'])

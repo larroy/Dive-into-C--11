@@ -1,15 +1,16 @@
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
-<Book id="diveintocpp">
-  <bookinfo>
-    <Title>Programming in C++11</Title>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.5//EN">
+<book>
+    <bookinfo>
+    <title>Programming in C++11</title>
+
     <authorgroup>
-      <author>
-        <FirstName>Pedro</FirstName><Surname>Larroy</Surname>
-        <affiliation>
-          <address><email>pedro.larroy at gmail</email></address>
-        </affiliation>
-      </author>
-  </authorgroup>
+    <author>
+    <firstname>Pedro</firstname> <surname>Larroy</surname>
+    <affiliation>
+    <address><email>pedro.larroy at gmail</email></address>
+    </affiliation>
+    </author>
+    </authorgroup>
 
     <!--
     <revhistory>
@@ -60,24 +61,39 @@
     </para>
 
     <example><title>Printing the elements of a vector with a lambda</title>
-    <programlisting><![CDATA[
-    #include <iostream>
-    #include <vector>
-    #include <algorithm>
-    using namespace std;
-    int main(int argc, char *argv[])
-    {
-        vector<int> vi;
-        vi.push_back(5);
-        vi.push_back(4);
-        vi.push_back(3);
-        for_each(vi.begin(), vi.end(), [](auto i){ cout << i << endl; });
-    }
-    ]]>
+    <programlisting>
+<![CDATA[
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main(int argc, char *argv[])
+{
+    vector<int> vi;
+    vi.push_back(5);
+    vi.push_back(4);
+    vi.push_back(3);
+    for_each(vi.begin(), vi.end(), [](int i) {
+        cout << i << endl;
+    });
+}
+]]>
     </programlisting>
+    <para>
+    With output:
+    </para>
+    <screen>
+5
+4
+3
+    </screen>
     </example>
+
+    <para>
+    The above example makes the code more concise versus a traditional loop since we can omit the index variable and the conditions, which reduces the chance of introducing bugs and improves readability.
+    </para>
 
 
 </chapter>
 
-</Book>
+</book>
