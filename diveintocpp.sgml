@@ -93,6 +93,41 @@ int main(int argc, char *argv[])
     The above example makes the code more concise versus a traditional loop since we can omit the index variable and the conditions, which reduces the chance of introducing bugs and improves readability.
     </para>
 
+    <para>
+    The lambda expression is composed of the declaration, and a compound statment. In our example the declaration is:
+<programlisting>
+<![CDATA[
+[](int i)
+]]>
+</programlisting>
+    The syntax of a lambda has three parts: the capture list [], the parameters (int i), and the optional return type. Which we ommited. 
+    In lambdas we can capture variables with automatic storage either explicitly, by listing them in the capture list, or implicitly by using them and letting the compiler figure out.
+
+    An equivalent declaration would have been:
+    [=](int i) -> void
+
+    </para>
+
+    <para>
+    Capturing variables:
+
+    By default, variables are captured by value, which means that the lambda will recieve a copy of this variable, and modifications won't be visible outside the scope of the lambda.
+
+    If we want to capture by reference, we can either change the capture default to &amp;, or explicitly capture the variable. If we have specified the default capture mode, we should not repeat it in the variables again
+
+    <itemizedlist>
+    <listitem><para>[&amp;] implicitly captures by reference</para></listitem>
+    <listitem><para>[&amp;i] explicitly capture i by reference</para></listitem>
+    <listitem><para>[&amp;,i] capture default by reference, explicitly capture i</para></listitem>
+    <listitem><para>[&amp;,&amp;i] Error</para></listitem>
+    <listitem><para>[=,this] Error</para></listitem>
+    <listitem><para>[this, =i] Capture this, capture i by value</para></listitem>
+    </itemizedlist>
+    </para>
+
+    <para>
+    </para>
+
 
 </chapter>
 
