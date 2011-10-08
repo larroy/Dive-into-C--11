@@ -41,6 +41,10 @@
     <ulink url="http://www.docbook.org/tdg/en/html/part2.html">http://www.docbook.org/tdg/en/html/part2.html</ulink>. You can use a simple text editor to contribute or use any docbook authoring tool, given that you don't mess the formatting or indentation of the file.
     </Para>
 
+    <para>
+    Some of the new features of C++11 make a big impact in the way we will write programs, allowing more concise code and more powerful standarized features across platforms.
+    </para>
+
     <Para>
     Copyright (c) 2011 by Pedro Larroy. This document can be distributed according to the terms of the GNU Free Documentation License. You can obtain a <ulink url="http://www.gnu.org/copyleft/fdl.html">copy of the GNUFDL license in this link</ulink>.
     </Para>
@@ -49,5 +53,31 @@
 
 
 
+<chapter id="lambdas">
+    <Title>Lambda expressions</Title>
+    <para>
+    Lambda expressions, also called anonymous functions are functions without an identifier.
+    </para>
+
+    <example><title>Printing the elements of a vector with a lambda</title>
+    <programlisting><![CDATA[
+    #include <iostream>
+    #include <vector>
+    #include <algorithm>
+    using namespace std;
+    int main(int argc, char *argv[])
+    {
+        vector<int> vi;
+        vi.push_back(5);
+        vi.push_back(4);
+        vi.push_back(3);
+        for_each(vi.begin(), vi.end(), [](auto i){ cout << i << endl; });
+    }
+    ]]>
+    </programlisting>
+    </example>
+
+
+</chapter>
 
 </Book>

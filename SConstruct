@@ -48,5 +48,5 @@ if not GetOption('verbose'):
     SCutils.setup_quiet_build(env)
 
 
-env.Command('book.pdf', 'book.sgml', ["docbook2pdf < $SOURCES"])
-
+env.Command('diveintocpp-{0}.pdf'.format(SCutils.branch_name()), 'diveintocpp.sgml', ["docbook2pdf $SOURCES"])
+env.Command('html', 'diveintocpp.sgml', ["db2html -u $SOURCES"])
