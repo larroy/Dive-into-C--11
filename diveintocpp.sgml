@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
     <para>
     Capturing variables:
 
-    By default, variables are captured by value, which means that the lambda will recieve a copy of this variable, and modifications won't be visible outside the scope of the lambda.
+    If we specify = in the capture list, variables are captured by value, which means that the lambda will recieve a copy of this variable, and modifications won't be visible outside the scope of the lambda.
 
     If we want to capture by reference, we can either change the capture default to &amp;, or explicitly capture the variable. If we have specified the default capture mode, we should not repeat it in the variables again
 
@@ -129,8 +129,64 @@ int main(int argc, char *argv[])
     </itemizedlist>
     </para>
 
+
+    <example><title>Calculating the sum of values</title>
+    <programlisting>
+    <![CDATA[
+vector<int> vi;
+vi.push_back(1);
+vi.push_back(2);
+vi.push_back(3);
+
+size_t sum = 0;
+
+for_each(vi.begin(), vi.end(), [&](int i) {
+    sum += i;
+});
+
+cout << sum << endl;
+    ]]>
+    </programlisting>
     <para>
+    In this example we calculate the sum of values, which is 6, by accessing the sum variable by reference.
     </para>
+    </example>
+
+
+    <para>
+    Technically, a lambda is equivalent to a functor that the compiler will generate with the captures as members. For example:
+
+    </para>
+
+    <programlisting>
+    <![CDATA[
+[&sum](int i) {
+    sum += i;
+};
+    ]]>
+    </programlisting>
+    
+    <para>
+    Is equivalent to:
+    </para>
+
+    <programlisting>
+    <![CDATA[
+struct X {
+    X(int& sum) :
+        sum(sum)
+    {}
+
+    void operator()(int i)
+    {
+        sum += i;
+    }   
+
+    int& sum;
+};
+    ]]>
+    </programlisting>
+
 
 
 </chapter>
@@ -192,17 +248,30 @@ cout << b << endl;
     ]]>
     </programlisting>
     <para>
-    In this manner, we can store a lambda for reusing it several times, for example passing it several times to the std::for_each function.
+    Which as you guessed, prints the value 10. In this manner, we can store a lambda for reusing it several times, for example passing it several times to the std::for_each function.
     </para>
     </example>
 
-
-
 </chapter>
 
+<chapter id="staticassert">
+    <title>Compile-time checks with static_assert</title>
+    <para>
+    The keyword static_assert will allow us to check if an integral constant expression is true when converted to bool at compile time. If the first argument of static_assert fails, the compiler can print the diagnostic message and fail.
+    </para>
 
-    
+    <example><title>Compile time check with static_assert</title>
+    <programlisting>
+    <![CDATA[
+static_assert(sizeof(int) == 4, "int size is not 32 bits");
+    ]]>
+    </programlisting>
+    </example>
 
+    <para>
+    In previous C++ versions the way of making a compile assertions was a trick consisting of specializing a template only for true values. As explained in the book: C++ Template Metaprogramming, a book by David Abrahams and Aleksey Gurtovoy. The static_assert keyword allows us to simplify this task.
+    </para>
+</chapter>
 
 
 </book>
