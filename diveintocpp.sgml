@@ -45,6 +45,10 @@
     <para>
     Some of the new features of C++11 make a big impact in the way we will write programs, allowing more concise code and more powerful standarized features across platforms.
     </para>
+    
+    <para>
+    For compiling the examples, g++ &gt; = 4.6 or Visual Studio 2010 should be able to compile most of them. <ulink url="http://wiki.apache.org/stdcxx/C%2B%2B0xCompilerSupport">Here is a nice table of C++11 compiler support</ulink>.
+    </para>
 
     <Para>
     Copyright (c) 2011 by Pedro Larroy. This document can be distributed according to the terms of the GNU Free Documentation License. You can obtain a <ulink url="http://www.gnu.org/copyleft/fdl.html">copy of the GNUFDL license in this link</ulink>.
@@ -130,5 +134,75 @@ int main(int argc, char *argv[])
 
 
 </chapter>
+
+
+<chapter id="auto">
+    <title>auto keyword</title>
+    <para>
+    In C or previous versions of C++, they keyword <emphasis>auto</emphasis> was used as storage specifier. Storage specifiers allow the compiler to decide object linkage (internal or external) and if the variable is to be stored in memory or a register. Auto was used to tell the compiler that the variable had automatic storage. Which means that the variable is deleted after the block is finished. Automatic storage is, and has been the default. In C++11 the auto keyword is used to let the compiler <emphasis>infer types</emphasis>.
+    </para>
+
+    <para>
+    The <emphasis>auto</emphasis> keyword tells the compiler that the type of an object should be deduced.
+    </para>
+
+    <example><title>Letting the compiler deduce the type of a variable with auto</title>
+    <programlisting>
+    <![CDATA[
+auto* i = new auto(1);
+    ]]>
+    </programlisting>
+    <para>
+    In this case the compiler will create the i variable with type <emphasis>int</emphasis>.
+    </para>
+    </example>
+
+    <para>
+    The previous example is not very interesting, let's see how <emphasis>auto</emphasis> can help in the typical loop when accessing an STL container:
+
+    <example><title>Letting the compiler deduce the type of an iterator with auto</title>
+    <programlisting>
+    <![CDATA[
+    map<int, string> mi;
+    mi.insert(make_pair(1,"one"));
+    mi.insert(make_pair(2,"two"));
+    mi.insert(make_pair(3,"three"));
+
+    for(auto i = mi.begin(); i != mi.end(); ++i)
+        cout << i->first << " " << i->second << endl;
+    ]]>
+    </programlisting>
+    <para>
+    In this example, using auto allows us to save declaring the type of the iterator, which usually becomes tedious, even for the most basic types.
+    </para>
+    </example>
+
+    <para>
+    The <emphasis>auto</emphasis> type specifier becomes crucial if we want to store a lambda to pass it around afterwards, since the type of a lambda is opaque for the compiler.
+    </para>
+
+    <example><title>Storing a lambda with the help of auto</title>
+    <programlisting>
+    <![CDATA[
+auto lambda = [](int i) -> int { return i * 2; };
+int a = 5;
+int b = lambda(a);
+
+cout << b << endl;
+    ]]>
+    </programlisting>
+    <para>
+    In this manner, we can store a lambda for reusing it several times, for example passing it several times to the std::for_each function.
+    </para>
+    </example>
+
+
+
+</chapter>
+
+
+    
+
+
 
 </book>

@@ -1,3 +1,6 @@
 Import('env')
 env.Append(CCFLAGS='-std=c++0x -Wall')
 env.Program('lambda', ['lambda.cpp'])
+env.Program('auto', ['auto.cpp'])
+env.Program('auto_stl', ['auto_stl.cpp'])
+env.Program('auto_lambda', ['auto_lambda.cpp'])
