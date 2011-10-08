@@ -1,0 +1,53 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+<Book id="diveintocpp">
+  <bookinfo>
+    <Title>Programming in C++11</Title>
+    <authorgroup>
+      <author>
+        <FirstName>Pedro</FirstName><Surname>Larroy</Surname>
+        <affiliation>
+          <address><email>pedro.larroy at gmail</email></address>
+        </affiliation>
+      </author>
+  </authorgroup>
+
+    <!--
+    <revhistory>
+        <revision>
+        <revnumber role="rcs">$Revision: 1.35 $</revnumber>
+            <date role="rcs">$Date: 2003/07/26 19:57:49 $</date>
+            <revremark>DocBook Edition</revremark>
+        </revision>
+    </revhistory>
+    -->
+
+   <Abstract>
+     <para>Using the new features of C++ effectively<application></application>,
+     </para>
+   </Abstract>
+
+</bookinfo>
+<toc></toc>
+
+<chapter id="intro">
+    <Title>Introduction</Title>
+
+    <Para>
+    Welcome, reader.
+    </Para>
+
+    <Para>
+    You might find useful the list of docbook tags:
+    <ulink url="http://www.docbook.org/tdg/en/html/part2.html">http://www.docbook.org/tdg/en/html/part2.html</ulink>. You can use a simple text editor to contribute or use any docbook authoring tool, given that you don't mess the formatting or indentation of the file.
+    </Para>
+
+    <Para>
+    Copyright (c) 2011 by Pedro Larroy. This document can be distributed according to the terms of the GNU Free Documentation License. You can obtain a <ulink url="http://www.gnu.org/copyleft/fdl.html">copy of the GNUFDL license in this link</ulink>.
+    </Para>
+
+</chapter> <!-- end of intro -->
+
+
+
+
+</Book>
