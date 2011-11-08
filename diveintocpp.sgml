@@ -56,6 +56,40 @@
 
 </chapter> <!-- end of intro -->
 
+<chapter id="ranges">
+    <Title>Range based iterators</Title>
+    <para>
+    We can use range based iteration in for loops to reduce noise and increase redability, compare the C style loop like: 
+    </para>
+    <programlisting>
+<![CDATA[
+    vector<int> vi;
+    vi.push_back(5);
+    vi.push_back(4);
+    vi.push_back(3);
+    for(vector<int>::iterator i = vi.begin(); i != vi.end(); ++i)
+        cout << *i << endl;
+    ]]>
+</programlisting>
+
+    <para>
+    With the C++11 style, range based loop and static vector initializer:
+    </para>
+
+    <programlisting>
+<![CDATA[
+    vector<int> vi = {5, 4, 3};
+    for (auto i: vi) 
+        cout << i << endl;
+    ]]>
+</programlisting>
+
+    <para>
+    The two code snippet are completely equivalent, but the former is clearer, terser, more semantic, and you don't have to carefully inspect the termination condition to check if we are really iterating over the whole range or one element less.
+    </para>
+</chapter>
+
+
 
 
 <chapter id="lambdas">
@@ -73,10 +107,7 @@
 using namespace std;
 int main(int argc, char *argv[])
 {
-    vector<int> vi;
-    vi.push_back(5);
-    vi.push_back(4);
-    vi.push_back(3);
+    vector<int> vi = {5, 4 ,3};
     for_each(vi.begin(), vi.end(), [](int i) {
         cout << i << endl;
     });
@@ -133,10 +164,7 @@ int main(int argc, char *argv[])
     <example><title>Calculating the sum of values</title>
     <programlisting>
     <![CDATA[
-vector<int> vi;
-vi.push_back(1);
-vi.push_back(2);
-vi.push_back(3);
+vector<int> vi = {1, 2, 3};
 
 size_t sum = 0;
 
