@@ -302,4 +302,25 @@ static_assert(sizeof(int) == 4, "int size is not 32 bits");
 </chapter>
 
 
+<chapter id="references">
+    <title>References</title>
+    <para>
+
+    <itemizedlist>
+    <listitem><para><ulink url="http://www.codeproject.com/KB/cpp/Cpp11_Standard_part1.aspx">C++11 at a Glance</ulink></para></listitem>
+    <listitem><para><ulink url="http://www2.research.att.com/~bs/C++0xFAQ.html">C++0x FAQ</ulink></para></listitem>
+    <listitem><para><ulink url="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/">C++ Standards Comittee Papers</ulink></para></listitem>
+    <listitem><para><ulink url="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html#Move_Semantics">Move semantics</ulink></para></listitem>
+    <listitem><para><ulink url="http://www.nwcpp.org/images/stories/lambda.pdf">Herb Sutter slides on lambdas</ulink></para></listitem>
+    <listitem><para><ulink url="http://herbsutter.com/elements-of-modern-c-style/">Elements of modern C++ style</ulink></para></listitem>
+    <listitem><para><ulink url="http://www.corensic.com/Learn/Resources/ConcurrencyTutorialPartOne.aspx">Corensic's C++11 Concurrency Series</ulink></para></listitem>
+    <listitem><para><ulink url="http://en.cppreference.com/w/cpp">C++ Reference</ulink></para></listitem>
+    </itemizedlist>
+
+
+
+    </para>
+
+</chapter>
+
 </book>
